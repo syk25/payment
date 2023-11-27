@@ -26,4 +26,12 @@ public class PaymentResponse {
     public void setRespondedAmount(Integer respondedAmount) {
         this.respondedAmount = respondedAmount;
     }
+
+    @Override
+    public String toString() {
+        return "PaymentResponse{" +
+                "authorization=" + authorization +
+                ", respondedAmount=" + respondedAmount +
+                '}';
+    }
 }
