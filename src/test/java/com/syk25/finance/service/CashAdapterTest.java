@@ -1,5 +1,6 @@
 package com.syk25.finance.service;
 
+import com.syk25.finance.service.adapters.CashAdapter;
 import com.syk25.finance.type.CancelledCashPaymentResult;
 import com.syk25.finance.type.CashPaymentResult;
 import org.junit.jupiter.api.Test;

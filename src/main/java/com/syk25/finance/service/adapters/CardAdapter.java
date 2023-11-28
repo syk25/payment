@@ -1,11 +1,12 @@
-package com.syk25.finance.service;
+package com.syk25.finance.service.adapters;
 
+import com.syk25.finance.service.interfaces.PaymentInterface;
 import com.syk25.finance.type.CancelledCardPaymentResult;
 import com.syk25.finance.type.CancelledPaymentResult;
 import com.syk25.finance.type.CardPaymentResult;
 import com.syk25.finance.type.PaymentResult;
 
-public class CardAdapter implements PaymentInterface{
+public class CardAdapter implements PaymentInterface {
     // 1. 인증
     public void authorization(){
         System.out.println("Authorization success.");

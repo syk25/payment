@@ -1,5 +1,6 @@
-package com.syk25.finance.service;
+package com.syk25.finance.service.adapters;
 
+import com.syk25.finance.service.interfaces.PaymentInterface;
 import com.syk25.finance.type.CancelledCashPaymentResult;
 import com.syk25.finance.type.CancelledPaymentResult;
 import com.syk25.finance.type.CashPaymentResult;

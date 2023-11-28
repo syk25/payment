@@ -13,7 +13,7 @@ class PaymentServiceTest {
     PaymentService paymentService = new PaymentService();
 
     @Test
-    public void name() {
+    public void pay_authorized() {
         // given
         PaymentRequest paymentRequest = new PaymentRequest(PayMethod.CASH, Store.GS25, 100);
 
