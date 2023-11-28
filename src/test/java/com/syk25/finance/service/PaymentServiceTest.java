@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PaymentServiceTest {
     ApplicationConfig applicationConfig = new ApplicationConfig();
-    PaymentService paymentService = applicationConfig.paymentServiceFollowingDiscountByPayMethod();
+    PaymentService paymentService = applicationConfig.paymentService();
 
     @Test
     public void pay_authorized() {
