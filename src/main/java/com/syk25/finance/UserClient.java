@@ -1,5 +1,6 @@
 package com.syk25.finance;
 
+import com.syk25.finance.config.ApplicationConfig;
 import com.syk25.finance.dto.CancelPaymentRequest;
 import com.syk25.finance.dto.CancelPaymentResponse;
 import com.syk25.finance.dto.PaymentRequest;
@@ -11,7 +12,8 @@ import static com.syk25.finance.type.Store.GS25;
 
 public class UserClient {
     public static void main(String[] args) {
-        PaymentService paymentService = new PaymentService();
+        ApplicationConfig applicationConfig = new ApplicationConfig();
+        PaymentService paymentService = applicationConfig.paymentServiceFollowingDiscountByPayMethod();
 
         // GS25, 1000원 카드결제
         PaymentResponse paymentResponse = paymentService.pay(new PaymentRequest(PayMethod.CARD, GS25, 1000));

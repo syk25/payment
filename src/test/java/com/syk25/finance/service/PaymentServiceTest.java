@@ -1,5 +1,6 @@
 package com.syk25.finance.service;
 
+import com.syk25.finance.config.ApplicationConfig;
 import com.syk25.finance.dto.PaymentRequest;
 import com.syk25.finance.dto.PaymentResponse;
 import com.syk25.finance.type.Authorization;
@@ -10,7 +11,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PaymentServiceTest {
-    PaymentService paymentService = new PaymentService();
+    ApplicationConfig applicationConfig = new ApplicationConfig();
+    PaymentService paymentService = applicationConfig.paymentServiceFollowingDiscountByPayMethod();
 
     @Test
     public void pay_authorized() {

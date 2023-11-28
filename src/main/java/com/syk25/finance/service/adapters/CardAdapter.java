@@ -1,10 +1,7 @@
 package com.syk25.finance.service.adapters;
 
 import com.syk25.finance.service.interfaces.PaymentInterface;
-import com.syk25.finance.type.CancelledCardPaymentResult;
-import com.syk25.finance.type.CancelledPaymentResult;
-import com.syk25.finance.type.CardPaymentResult;
-import com.syk25.finance.type.PaymentResult;
+import com.syk25.finance.type.*;
 
 public class CardAdapter implements PaymentInterface {
     // 1. 인증
@@ -31,6 +28,11 @@ public class CardAdapter implements PaymentInterface {
             return CancelledCardPaymentResult.FAILED;
         }
         return CancelledCardPaymentResult.SUCCEEDED;
+    }
+
+    @Override
+    public PayMethod getPayMethod() {
+        return PayMethod.CARD;
     }
 
     @Override
