@@ -1,6 +1,5 @@
 package com.syk25.finance;
 
-import com.syk25.finance.config.ApplicationConfig;
 import com.syk25.finance.dto.CancelPaymentRequest;
 import com.syk25.finance.dto.CancelPaymentResponse;
 import com.syk25.finance.dto.PaymentRequest;
@@ -8,7 +7,7 @@ import com.syk25.finance.dto.PaymentResponse;
 import com.syk25.finance.service.PaymentService;
 import com.syk25.finance.type.PayMethod;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import static com.syk25.finance.type.Store.GS25;
 
@@ -16,8 +15,8 @@ import static com.syk25.finance.type.Store.GS25;
 public class UserClient {
     public static void main(String[] args) {
 
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ApplicationConfig.class);
-        PaymentService paymentService = applicationContext.getBean("paymentService2", PaymentService.class);
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-config.xml");
+        PaymentService paymentService = applicationContext.getBean("paymentService", PaymentService.class);
 
         // GS25, 1000원 카드결제
         PaymentResponse paymentResponse = paymentService.pay(new PaymentRequest(PayMethod.CARD, GS25, 1000));
