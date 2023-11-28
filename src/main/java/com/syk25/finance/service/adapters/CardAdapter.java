@@ -2,7 +2,9 @@ package com.syk25.finance.service.adapters;
 
 import com.syk25.finance.service.interfaces.PaymentInterface;
 import com.syk25.finance.type.*;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CardAdapter implements PaymentInterface {
     // 1. 인증
     public void authorization(){

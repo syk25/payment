@@ -17,7 +17,7 @@ public class UserClient {
     public static void main(String[] args) {
 
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ApplicationConfig.class);
-        PaymentService paymentService = applicationContext.getBean("paymentService2", PaymentService.class);
+        PaymentService paymentService = applicationContext.getBean("paymentService", PaymentService.class);
 
         // GS25, 1000원 카드결제
         PaymentResponse paymentResponse = paymentService.pay(new PaymentRequest(PayMethod.CARD, GS25, 1000));
