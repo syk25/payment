@@ -1,15 +1,25 @@
 package com.syk25.finance.dto;
 
+import com.syk25.finance.type.PayMethod;
 import com.syk25.finance.type.Store;
 
 public class PaymentRequest {
-
+    PayMethod payMethod;
     Store store;
     Integer requestedAmount;
 
-    public PaymentRequest(Store store, Integer requestedAmount) {
+    public PaymentRequest(PayMethod payMethod, Store store, Integer requestedAmount) {
+        this.payMethod = payMethod;
         this.store = store;
         this.requestedAmount = requestedAmount;
+    }
+
+    public PayMethod getPayMethod() {
+        return payMethod;
+    }
+
+    public void setPayMethod(PayMethod payMethod) {
+        this.payMethod = payMethod;
     }
 
     public Store getStore() {

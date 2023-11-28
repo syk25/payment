@@ -1,7 +1,7 @@
 package com.syk25.finance.service;
 
-import com.syk25.finance.type.CancelledPaidByCashResult;
-import com.syk25.finance.type.PaidByCashResult;
+import com.syk25.finance.type.CancelledCashPaymentResult;
+import com.syk25.finance.type.CashPaymentResult;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,9 +14,9 @@ class CashAdapterTest {
         // given
         Integer amount = 1000_000;
         // when
-        PaidByCashResult paidByCashResult = cashAdapter.payByCash(amount);
+        CashPaymentResult cashPaymentResult = cashAdapter.payByCash(amount);
         // then
-        assertEquals(PaidByCashResult.AUTHORIZED, paidByCashResult);
+        assertEquals(CashPaymentResult.SUCCEEDED, cashPaymentResult);
     }
 
     @Test
@@ -24,9 +24,9 @@ class CashAdapterTest {
         // given
         Integer amount = 1000_001;
         // when
-        PaidByCashResult paidByCashResult = cashAdapter.payByCash(amount);
+        CashPaymentResult cashPaymentResult = cashAdapter.payByCash(amount);
         // then
-        assertEquals(PaidByCashResult.FAILED,paidByCashResult);
+        assertEquals(CashPaymentResult.FAILED, cashPaymentResult);
     }
 
     @Test
@@ -34,9 +34,9 @@ class CashAdapterTest {
         // given
         Integer cancellingAmount = 101;
         // when
-        CancelledPaidByCashResult cancelledPaidByCashResult = cashAdapter.cancelPayByCash(cancellingAmount);
+        CancelledCashPaymentResult cancelledCashPaymentResult = cashAdapter.cancelPayByCash(cancellingAmount);
         // then
-        assertEquals(CancelledPaidByCashResult.AUTHORIZED, cancelledPaidByCashResult);
+        assertEquals(CancelledCashPaymentResult.SUCCEEDED, cancelledCashPaymentResult);
     }
 
     @Test
@@ -44,9 +44,9 @@ class CashAdapterTest {
         // given
         Integer cancellingAmount = 99;
         // when
-        CancelledPaidByCashResult cancelledPaidByCashResult = cashAdapter.cancelPayByCash(cancellingAmount);
+        CancelledCashPaymentResult cancelledCashPaymentResult = cashAdapter.cancelPayByCash(cancellingAmount);
         // then
-        assertEquals(CancelledPaidByCashResult.DENIED, cancelledPaidByCashResult);
+        assertEquals(CancelledCashPaymentResult.FAILED, cancelledCashPaymentResult);
     }
 
 }

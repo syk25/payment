@@ -4,31 +4,43 @@ import com.syk25.finance.dto.CancelPaymentRequest;
 import com.syk25.finance.dto.CancelPaymentResponse;
 import com.syk25.finance.dto.PaymentRequest;
 import com.syk25.finance.dto.PaymentResponse;
-import com.syk25.finance.type.Authorization;
-import com.syk25.finance.type.CancelledPaidByCashResult;
-import com.syk25.finance.type.PaidByCashResult;
+import com.syk25.finance.type.*;
 
 public class PaymentService {
     CashAdapter cashAdapter = new CashAdapter();
+    CardAdapter cardAdapter = new CardAdapter();
+    PaymentInterface paymentInterface;
+
 
     public PaymentResponse pay(PaymentRequest paymentRequest){
-        PaidByCashResult paidByCashResult = cashAdapter.payByCash(paymentRequest.getAmount());
+        if(paymentRequest.getPayMethod() == PayMethod.CARD){
+            paymentInterface = cardAdapter;
+        } else {
+            paymentInterface = cashAdapter;
+        }
 
+        PaymentResult paymentResult = paymentInterface.payment(paymentRequest.getAmount());
 
-        if(paidByCashResult == PaidByCashResult.AUTHORIZED){
+        if(paymentResult == PaymentResult.SUCCEEDED){
             return new PaymentResponse(Authorization.AUTHORIZED, paymentRequest.getAmount());
         } else {
-            return new PaymentResponse(Authorization.DENIED, 100);
+            return new PaymentResponse(Authorization.DENIED, paymentRequest.getAmount());
         }
     }
 
     public CancelPaymentResponse cancelPay(CancelPaymentRequest cancelPaymentRequest){
-        CancelledPaidByCashResult cancelledPaidByCashResult = cashAdapter.cancelPayByCash(cancelPaymentRequest.getCancellingAmount());
-
-        if(cancelledPaidByCashResult == CancelledPaidByCashResult.AUTHORIZED){
-            return new CancelPaymentResponse(Authorization.AUTHORIZED, cancelPaymentRequest.getCancellingAmount());
+        if(cancelPaymentRequest.getPayMethod() == PayMethod.CARD){
+            paymentInterface = cardAdapter;
         } else {
+            paymentInterface = cashAdapter;
+        }
+
+        CancelledPaymentResult cancelledPaymentResult = paymentInterface.cancelPayment(cancelPaymentRequest.getCancellingAmount());
+
+        if(cancelledPaymentResult == CancelledPaymentResult.FAILED){
             return new CancelPaymentResponse(Authorization.DENIED, cancelPaymentRequest.getCancellingAmount());
+        } else {
+            return new CancelPaymentResponse(Authorization.AUTHORIZED, cancelPaymentRequest.getCancellingAmount());
         }
     }
 }

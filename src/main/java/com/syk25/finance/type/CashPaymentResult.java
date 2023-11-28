@@ -1,7 +1,7 @@
 package com.syk25.finance.type;
 
-public enum PaidByCashResult {
-    AUTHORIZED,
+public enum CashPaymentResult {
+    SUCCEEDED,
     FAILED
 }
 

@@ -1,14 +1,17 @@
 package com.syk25.finance.dto;
 
+import com.syk25.finance.type.PayMethod;
 import com.syk25.finance.type.Store;
 
 public class CancelPaymentRequest {
     Store store;
     Integer cancellingAmount;
+    PayMethod payMethod;
 
-    public CancelPaymentRequest(Store store, Integer cancellingAmount) {
+    public CancelPaymentRequest(PayMethod payMethod, Store store, Integer cancellingAmount) {
         this.store = store;
         this.cancellingAmount = cancellingAmount;
+        this.payMethod = payMethod;
     }
 
     public Store getStore() {
@@ -25,5 +28,13 @@ public class CancelPaymentRequest {
 
     public void setCancellingAmount(Integer cancellingAmount) {
         this.cancellingAmount = cancellingAmount;
+    }
+
+    public PayMethod getPayMethod() {
+        return payMethod;
+    }
+
+    public void setPayMethod(PayMethod payMethod) {
+        this.payMethod = payMethod;
     }
 }

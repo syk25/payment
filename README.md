@@ -8,3 +8,5 @@ A payment service made with vanilla Java.
 - Java11
 - IntelliJ
 
+## Progress
+Check [dlog.md](dlog.md).</br>
