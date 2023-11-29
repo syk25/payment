@@ -10,7 +10,6 @@ import com.syk25.finance.type.Authorization;
 import com.syk25.finance.type.CancelledPaymentResult;
 import com.syk25.finance.type.PayMethod;
 import com.syk25.finance.type.PaymentResult;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -23,7 +22,7 @@ public class PaymentService {
     private final Map<PayMethod, PaymentInterface> paymentInterfaceMap = new HashMap<>();
     private final DiscountInterface discountInterface;
 
-    public PaymentService(Set<PaymentInterface> paymentInterfaceSet, @Qualifier("discountByStore") DiscountInterface discountInterface) {
+    public PaymentService(Set<PaymentInterface> paymentInterfaceSet, DiscountInterface discountInterface) {
         paymentInterfaceSet.forEach(
                 paymentInterface -> paymentInterfaceMap.put(
                         paymentInterface.getPayMethod(),
