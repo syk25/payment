@@ -7,12 +7,14 @@ import com.syk25.finance.type.Authorization;
 import com.syk25.finance.type.PayMethod;
 import com.syk25.finance.type.Store;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class PaymentServiceTest {
-    ApplicationConfig applicationConfig = new ApplicationConfig();
-    PaymentService paymentService = applicationConfig.paymentService();
+    ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ApplicationConfig.class);
+    PaymentService paymentService = applicationContext.getBean("paymentService", PaymentService.class);
 
     @Test
     public void pay_authorized() {
