@@ -11,6 +11,7 @@ import com.syk25.finance.type.CancelledPaymentResult;
 import com.syk25.finance.type.PayMethod;
 import com.syk25.finance.type.PaymentResult;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -18,6 +19,7 @@ import java.util.Map;
 import java.util.Set;
 
 @Component
+@Scope("prototype")
 public class PaymentService {
 
     private final Map<PayMethod, PaymentInterface> paymentInterfaceMap = new HashMap<>();
