@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 public class DiscountByPayMethod implements DiscountInterface {
     @Override
     public Integer getDiscountAmount(PaymentRequest paymentRequest) {
+        System.out.println("DiscountByPayMethod called");
         switch (paymentRequest.getPayMethod()) {
             case CARD -> {
                 return paymentRequest.getAmount();
