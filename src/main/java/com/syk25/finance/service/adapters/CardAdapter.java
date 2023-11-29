@@ -2,6 +2,7 @@ package com.syk25.finance.service.adapters;
 
 import com.syk25.finance.service.interfaces.PaymentInterface;
 import com.syk25.finance.type.*;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
