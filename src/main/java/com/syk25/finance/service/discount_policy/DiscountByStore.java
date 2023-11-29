@@ -4,10 +4,11 @@ import com.syk25.finance.dto.PaymentRequest;
 import com.syk25.finance.service.interfaces.DiscountInterface;
 import org.springframework.stereotype.Component;
 
-//@Component
+@Component
 public class DiscountByStore implements DiscountInterface {
     @Override
     public Integer getDiscountAmount(PaymentRequest paymentRequest) {
+        System.out.println("DiscountByStore called");
         switch (paymentRequest.getStore()) {
             case CU -> {
                 return paymentRequest.getAmount() * 8 / 10;
